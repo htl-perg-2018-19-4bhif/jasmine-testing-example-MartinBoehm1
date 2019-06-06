@@ -42,7 +42,30 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
+  it('should disable add button if name or category of product is empty', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const de = fixture.debugElement;
+    const ne: HTMLElement = de.nativeElement;
+    const app: AppComponent = de.componentInstance;
 
+    const addButton: HTMLButtonElement = ne.querySelector('#add-button');
+
+    app.product = 'Pizza';
+    app.priceInclusiveVat = 6;
+    expect(addButton.disabled).toBeTruthy();
+    app.product=undefined;
+    app.priceInclusiveVat = 6;
+    app.vatCategoryString = 'Food';
+    fixture.detectChanges();
+    expect(addButton.disabled).toBeTruthy();
+
+    app.product = 'Pizza';
+    app.priceInclusiveVat = 6;
+    app.vatCategoryString = 'Food';
+    fixture.detectChanges();
+
+    expect(addButton.disabled).toBeFalsy();
+  });
   it('should disable add button if description of price are empty', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const de = fixture.debugElement;

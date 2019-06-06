@@ -35,16 +35,7 @@
       </td>
 
       <td>&nbsp;</td>
-      <td>
-          <button id="add-button" (click)="addInvoice()" [disabled]="!priceInclusiveVat">Add</button></td>
-      
+      <td><button id="add-button" (click)="addInvoice()" [disabled]="!priceInclusiveVat">Add</button></td>
     </tr>
   </tbody>
 </table>
-
-<ul>
-    <li *ngFor="let item of test">
-      {{ item }} 
-    </li>
-  </ul>
-  

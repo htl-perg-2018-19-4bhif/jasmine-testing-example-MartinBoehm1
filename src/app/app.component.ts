@@ -17,7 +17,7 @@ export class AppComponent {
   invoice: Invoice//=this.service.CalculateInvoice(this.invoiceLines);
 
   vatCategoryString;
-  priceInclusiveVat = 0;
+  priceInclusiveVat;
   product;
   constructor(private invoiceCalculator: InvoiceCalculatorService) { }
 
