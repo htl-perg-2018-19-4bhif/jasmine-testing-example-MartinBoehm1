@@ -10,32 +10,41 @@
     </tr>
   </thead>
   <tbody>
-    <tr id="invoice-lines">
-      <td>REPLACE this with data binding for product description</td>
-      <td>REPLACE this with data binding for price inclusive VAT</td>
-      <td>REPLACE this with data binding for price exclusive VAT</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
+      <tr *ngFor="let line of invoiceLines">
+        <td>{{line.product}}</td>
+        <td>{{line.priceInclusiveVat}}</td>
+        <td>{{line.priceExclusiveVat}}</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
         <td><b>Total</b></td>
-        <td id="totalPriceInclusiveVat">REPLACE this with data binding for total price inclusive VAT</td>
-        <td id="totalPriceExclusiveVat">REPLACE this with data binding for total price exclusive VAT</td>
+        <td>{{invoice.totalPriceInclusiveVat}}</td>
+        <td>{{invoice.totalPriceExclusiveVat}}</td>
+        <td>&nbsp;</td>
       </tr>
       <tr>
       <td>
-        <input id="product-input" type="text" />
-        <select id="vat-category-input" >
+        <input [(ngModel)]="product" type="text" />
+        <select [(ngModel)]="vatCategoryString" >
           <option>Food</option>
           <option>Drinks</option>
         </select>
       </td>
       <td>
-        <input id="priceInclusiveVat-input" type="number" />
+        <input [(ngModel)]="priceInclusiveVat" type="number" />
       </td>
+
       <td>&nbsp;</td>
       <td>
-        <button id="add-button" (click)="addInvoice()">Add</button>
-      </td>
+          <button id="add-button" (click)="addInvoice()" [disabled]="!priceInclusiveVat">Add</button></td>
+      
     </tr>
   </tbody>
 </table>
+
+<ul>
+    <li *ngFor="let item of test">
+      {{ item }} 
+    </li>
+  </ul>
+  
